@@ -2,6 +2,24 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
 
+## Prerequisites
+
+This project requires [npm](https://www.npmjs.com/) to work.
+
+It also requires the API project since it does not support yet stubs/mocks.
+
+## Developement environment
+
+- Install `angular-cli` with Nodejs : `npm install -g angular-cli`
+- Run `npm install` to automatically get npm packages and typings
+- Run `npm install -g PACKAGE-NAME` to install new npm package globally
+
+### TSLint
+
+This project is using TSLint to keep a clean code and share guidelines (Work in progress).
+
+Run `npm run lint` in the `src` directory to scan each file.
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
