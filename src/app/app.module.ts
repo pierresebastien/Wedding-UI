@@ -12,12 +12,14 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { HeaderService } from './shared/services/header.service';
+import { AlbumComponent } from './album/album.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

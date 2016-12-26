@@ -11,12 +11,12 @@ export class HeaderService {
   constructor() {
     this.title = 'Ju & Seb';
     this.links = [
-      { name: 'Accueil', active: false, url: '#', icon: '' },
+      { name: 'Accueil', active: false, url: '/', icon: '' },
       { name: 'Cérémonie', active: false, url: '#', icon: '' },
       { name: 'Plan', active: false, url: '#', icon: '' },
       { name: 'Confirmation', active: false, url: '#', icon: '' },
       { name: 'Liste', active: false, url: '#', icon: '' },
-      { name: 'Photos', active: false, url: '#', icon: '' }
+      { name: 'Photos', active: false, url: '/album', icon: '' }
     ];
   }
 
