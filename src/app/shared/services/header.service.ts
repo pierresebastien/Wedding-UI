@@ -11,7 +11,7 @@ export class HeaderService {
   constructor() {
     this.title = 'Ju & Seb';
     this.links = [
-      { name: 'Accueil', active: true, url: '#', icon: '' },
+      { name: 'Accueil', active: false, url: '#', icon: '' },
       { name: 'Cérémonie', active: false, url: '#', icon: '' },
       { name: 'Plan', active: false, url: '#', icon: '' },
       { name: 'Confirmation', active: false, url: '#', icon: '' },
@@ -28,5 +28,8 @@ export class HeaderService {
     return this.title;
   }
 
-  
+  setActiveLink(name: string) {
+    _.forEach(_.filter(this.links, x => x.active), x => x.active = false);
+    _.first(_.filter(this.links, x => x.name === name)).active = true;
+  }
 }
