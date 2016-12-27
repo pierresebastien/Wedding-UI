@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { AppRoutes } from './shared/routes/app.routes';
 
@@ -13,20 +14,25 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { HeaderService } from './shared/services/header.service';
 import { AlbumComponent } from './album/album.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    AlbumComponent
+    AlbumComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(AppRoutes),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDk6xj1gWOzcLEqPtXlKfWjiWkSd66RXt0'
+    })
   ],
   providers: [HeaderService],
   bootstrap: [AppComponent]

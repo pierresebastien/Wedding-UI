@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Link } from '../models/link.model';
+import { Link, HOME_LINK, MAP_LINK, INVITATION_LINK, GIFT_LINK, ALBUM_LINK } from '../models/link.model';
 
 @Injectable()
 export class HeaderService {
@@ -11,12 +11,11 @@ export class HeaderService {
   constructor() {
     this.title = 'Ju & Seb';
     this.links = [
-      { name: 'Accueil', active: false, url: '/', icon: '' },
-      { name: 'Cérémonie', active: false, url: '#', icon: '' },
-      { name: 'Plan', active: false, url: '#', icon: '' },
-      { name: 'Confirmation', active: false, url: '#', icon: '' },
-      { name: 'Liste', active: false, url: '#', icon: '' },
-      { name: 'Photos', active: false, url: '/album', icon: '' }
+      { id: HOME_LINK, name: 'Accueil', active: false, url: '/', icon: '' },
+      { id: MAP_LINK, name: 'Plan', active: false, url: '/map', icon: '' },
+      { id: INVITATION_LINK, name: 'Votre invitation', active: false, url: '#', icon: '' },
+      { id: GIFT_LINK, name: 'Liste de cadeaux', active: false, url: '#', icon: '' },
+      { id: ALBUM_LINK, name: 'Photos', active: false, url: '/album', icon: '' }
     ];
   }
 
@@ -28,8 +27,8 @@ export class HeaderService {
     return this.title;
   }
 
-  setActiveLink(name: string) {
+  setActiveLink(id: number) {
     _.forEach(_.filter(this.links, x => x.active), x => x.active = false);
-    _.first(_.filter(this.links, x => x.name === name)).active = true;
+    _.first(_.filter(this.links, x => x.id === id)).active = true;
   }
 }
