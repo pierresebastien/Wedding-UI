@@ -15,6 +15,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HeaderService } from './shared/services/header.service';
 import { AlbumComponent } from './album/album.component';
 import { MapComponent } from './map/map.component';
+import { GiftComponent } from './gift/gift.component';
+import { InvitationComponent } from './invitation/invitation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MapComponent } from './map/map.component';
     HomeComponent,
     NavbarComponent,
     AlbumComponent,
-    MapComponent
+    MapComponent,
+    GiftComponent,
+    InvitationComponent
   ],
   imports: [
     BrowserModule,

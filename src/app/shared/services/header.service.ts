@@ -13,8 +13,8 @@ export class HeaderService {
     this.links = [
       { id: HOME_LINK, name: 'Accueil', active: false, url: '/', icon: '' },
       { id: MAP_LINK, name: 'Plan', active: false, url: '/map', icon: '' },
-      { id: INVITATION_LINK, name: 'Votre invitation', active: false, url: '#', icon: '' },
-      { id: GIFT_LINK, name: 'Liste de cadeaux', active: false, url: '#', icon: '' },
+      { id: INVITATION_LINK, name: 'Votre invitation', active: false, url: '/invitation', icon: '' },
+      { id: GIFT_LINK, name: 'Liste de cadeaux', active: false, url: '/gift', icon: '' },
       { id: ALBUM_LINK, name: 'Photos', active: false, url: '/album', icon: '' }
     ];
   }
