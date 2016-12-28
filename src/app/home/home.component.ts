@@ -10,6 +10,8 @@ import { HOME_LINK } from '../shared/models/link.model';
 })
 export class HomeComponent implements OnInit {
 
+  weddingDate = new Date(2017, 5, 10, 14, 0, 0);
+
   constructor(private HeaderService: HeaderService) {
     HeaderService.setActiveLink(HOME_LINK);
   }

@@ -1,0 +1,37 @@
+.countdown-row {
+    height: 0;
+    padding: 0;
+    clear: both;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.countdown-section {
+    width: 24%;
+    margin: 10px 0.5%;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5%;
+    display: block;
+    float: left;
+    font-size: 75%;
+    box-sizing: border-box;
+}
+
+.countdown-amount {
+    font-size: 36px;
+    font-weight: 700;
+    display: block;
+    box-sizing: border-box;
+}
+
+.countdown-period {
+    display: block;
+    font-size: 28px;
+    line-height: 1.2;
+    margin-top: 15px;
+    box-sizing: border-box;
+}

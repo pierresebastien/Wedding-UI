@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
@@ -10,13 +11,14 @@ import { AppRoutes } from './shared/routes/app.routes';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HeaderService } from './shared/services/header.service';
 import { AlbumComponent } from './album/album.component';
 import { MapComponent } from './map/map.component';
 import { GiftComponent } from './gift/gift.component';
 import { InvitationComponent } from './invitation/invitation.component';
+import { CountdownComponent } from './shared/components/countdown/countdown.component';
+import { FormComponent } from './invitation/form/form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { InvitationComponent } from './invitation/invitation.component';
     AlbumComponent,
     MapComponent,
     GiftComponent,
-    InvitationComponent
+    InvitationComponent,
+    CountdownComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
