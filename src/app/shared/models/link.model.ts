@@ -1,9 +1,10 @@
 export class Link {
-  id: number;
-  name: string;
-  active: boolean;
-  url: string;
-  icon: string;
+  constructor(
+    public id: number,
+    public name: string,
+    public url: string,
+    public active?: boolean,
+    public icon?: string) { }
 }
 
 export const HOME_LINK = 1;
