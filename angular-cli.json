@@ -24,7 +24,6 @@
         "styles.scss"
       ],
       "scripts": [
-        "../node_modules/lodash/lodash.js"
       ],
       "environments": {
         "source": "environments/environment.ts",

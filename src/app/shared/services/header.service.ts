@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-declare var _: any;
+import * as _ from 'lodash';
 
 import { Link, HOME_LINK, MAP_LINK, INVITATION_LINK, GIFT_LINK, ALBUM_LINK } from '../models/link.model';
 
