@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { Http, HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { RestangularModule } from 'ng2-restangular';
 
 import { AppRoutes } from './shared/routes/app.routes';
 
@@ -19,6 +20,12 @@ import { GiftComponent } from './gift/gift.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { CountdownComponent } from './shared/components/countdown/countdown.component';
 import { FormComponent } from './invitation/form/form.component';
+
+export function restangularConfig(RestangularProvider, http) {
+  let apiUrl: string = window.location.protocol.concat('//').concat(window.location.hostname).concat('/api');
+  RestangularProvider.setBaseUrl(apiUrl);
+  RestangularProvider.setDefaultHeaders({ 'Accept': 'application/json' });
+}
 
 @NgModule({
   declarations: [
@@ -40,7 +47,8 @@ import { FormComponent } from './invitation/form/form.component';
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDk6xj1gWOzcLEqPtXlKfWjiWkSd66RXt0'
-    })
+    }),
+    RestangularModule.forRoot([Http], restangularConfig)
   ],
   providers: [HeaderService],
   bootstrap: [AppComponent]
