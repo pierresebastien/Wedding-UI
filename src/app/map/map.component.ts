@@ -10,15 +10,18 @@ import { MAP_LINK } from '../shared/models/link.model';
 })
 export class MapComponent implements OnInit {
 
-  title: string = 'Gîte le vieux sanglier';
-  lat: number = 50.433132;
-  lng: number = 6.052190;
+  title: string;
+  lat: number;
+  lng: number;
 
   constructor(private HeaderService: HeaderService) {
-    HeaderService.setActiveLink(MAP_LINK);
+    this.title = 'Gîte le vieux sanglier';
+    this.lat = 50.433132;
+    this.lng = 6.052190;
   }
 
   ngOnInit() {
+    this.HeaderService.setActiveLink(MAP_LINK);
   }
 
 }

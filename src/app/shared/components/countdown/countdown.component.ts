@@ -9,10 +9,10 @@ export class CountdownComponent implements OnInit {
 
   @Input() date: Date;
 
-  private secondInterval: number = 1000;
-  private minuteInterval: number = this.secondInterval * 60;
-  private hourInterval: number = this.minuteInterval * 60;
-  private dayInterval: number = this.hourInterval * 24;
+  private secondInterval: number;
+  private minuteInterval: number;
+  private hourInterval: number;
+  private dayInterval: number;
 
   days: number;
   hours: number;
@@ -20,10 +20,14 @@ export class CountdownComponent implements OnInit {
   seconds: number;
 
   constructor() {
-    setInterval(() => this.refreshCountdown(), 1000);
+    this.secondInterval = 1000;
+    this.minuteInterval = this.secondInterval * 60;
+    this.hourInterval = this.minuteInterval * 60;
+    this.dayInterval = this.hourInterval * 24;
   }
 
   ngOnInit() {
+    setInterval(() => this.refreshCountdown(), 1000);
   }
 
   refreshCountdown() {

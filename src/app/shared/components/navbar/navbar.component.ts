@@ -15,10 +15,10 @@ export class NavbarComponent implements OnInit {
   links: Link[];
 
   constructor(private HeaderService: HeaderService) {
-    this.title = HeaderService.getTitle();
-    this.links = HeaderService.getLinks();
   }
 
   ngOnInit() {
+    this.title = this.HeaderService.getTitle();
+    this.links = this.HeaderService.getLinks();
   }
 }

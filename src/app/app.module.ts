@@ -9,11 +9,14 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 import { RestangularModule } from 'ng2-restangular';
 
 import { AppRoutes } from './shared/routes/app.routes';
+import { AuthGuard } from './shared/auth.guard';
+
+import { HeaderService } from './shared/services/header.service';
+import { UserService } from './shared/services/user.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { HeaderService } from './shared/services/header.service';
 import { AlbumComponent } from './album/album.component';
 import { MapComponent } from './map/map.component';
 import { GiftComponent } from './gift/gift.component';
@@ -50,7 +53,7 @@ export function restangularConfig(RestangularProvider, http) {
     }),
     RestangularModule.forRoot([Http], restangularConfig)
   ],
-  providers: [HeaderService],
+  providers: [AuthGuard, HeaderService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

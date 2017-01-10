@@ -12,16 +12,17 @@ import { HOME_LINK } from '../shared/models/link.model';
 })
 export class HomeComponent implements OnInit {
 
-  weddingDate = new Date(2017, 5, 10, 14, 0, 0);
+  weddingDate: Date;
   test: string;
 
   constructor(private HeaderService: HeaderService, private restangular: Restangular) {
-    HeaderService.setActiveLink(HOME_LINK);
-    restangular.one('info').get().subscribe(info => {
-      this.test= info.Message;
-    });
+    this.weddingDate = new Date(2017, 5, 10, 14, 0, 0);
   }
 
-  ngOnInit() {   
+  ngOnInit() {
+    this.HeaderService.setActiveLink(HOME_LINK);
+    this.restangular.one('info').get().subscribe(info => {
+      this.test = info.Message;
+    });
   }
 }
