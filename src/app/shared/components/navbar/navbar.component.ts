@@ -19,6 +19,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.title = this.HeaderService.getTitle();
-    this.links = this.HeaderService.getLinks();
+    this.HeaderService.getLinks().subscribe(links => this.links = links);
   }
 }

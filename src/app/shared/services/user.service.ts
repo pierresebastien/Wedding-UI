@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
-
 import { Observable } from 'rxjs/Observable';
+
 import { Restangular } from 'ng2-restangular';
 
 import { User } from '../models/user.model';
@@ -10,17 +9,13 @@ import { User } from '../models/user.model';
 export class UserService {
 
   user: User;
+  currentUser: Observable<User>;
 
-  constructor(private restangular: Restangular) { }
+  constructor(private restangular: Restangular) {
+    this.currentUser = this.restangular.one('user/me').get();
+  }
 
   getCurrentUser(): Observable<User> {
-    if (this.user != null) {
-      return Observable.of(this.user);
-    }
-    else {
-      var observable = this.restangular.one('user/me').get();
-      observable.subscribe(x => this.user = x);
-      return observable;
-    }
+    return this.currentUser;
   }
 }

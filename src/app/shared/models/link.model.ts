@@ -3,6 +3,7 @@ export class Link {
     public id: number,
     public name: string,
     public url: string,
+    public needAuth: boolean,
     public active?: boolean,
     public icon?: string) { }
 }

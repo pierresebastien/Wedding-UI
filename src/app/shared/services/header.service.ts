@@ -1,27 +1,39 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
 import * as _ from 'lodash';
 
 import { Link, HOME_LINK, MAP_LINK, INVITATION_LINK, GIFT_LINK, ALBUM_LINK } from '../models/link.model';
+import { UserService } from './user.service';
 
 @Injectable()
 export class HeaderService {
 
   title: string;
-  links: Link[];
+  allLinks: Link[];
+  availableLinks: Link[];
 
-  constructor() {
+  constructor(private UserService: UserService) {
     this.title = 'Ju & Seb';
-    this.links = [
-      new Link(HOME_LINK, 'Accueil', '/'),
-      new Link(MAP_LINK, 'Plan', '/map'),
-      new Link(INVITATION_LINK, 'Votre invitation', '/invitation'),
-      new Link(GIFT_LINK, 'Liste de cadeaux', '/gift'),
-      new Link(ALBUM_LINK, 'Photos', '/album')
+    this.allLinks = [
+      new Link(HOME_LINK, 'Accueil', '/', false),
+      new Link(MAP_LINK, 'Plan', '/map', true),
+      new Link(INVITATION_LINK, 'Votre invitation', '/invitation', false),
+      new Link(GIFT_LINK, 'Liste de cadeaux', '/gift', true),
+      new Link(ALBUM_LINK, 'Photos', '/album', true)
     ];
+    this.availableLinks = _.filter(this.allLinks, x => !x.needAuth);
   }
 
-  getLinks(): Link[] {
-    return this.links;
+  getLinks(): Observable<Link[]> {
+    return this.UserService.getCurrentUser().map(user => {
+      if (user != null) {
+        this.availableLinks = this.allLinks;
+      } else {
+        this.availableLinks = _.filter(this.allLinks, x => !x.needAuth);
+      }
+      return this.availableLinks;
+    });
   }
 
   getTitle(): string {
@@ -29,7 +41,7 @@ export class HeaderService {
   }
 
   setActiveLink(id: number) {
-    _.forEach(_.filter(this.links, x => x.active), x => x.active = false);
-    _.first(_.filter(this.links, x => x.id === id)).active = true;
+    _.forEach(_.filter(this.availableLinks, x => x.active), x => x.active = false);
+    _.first(_.filter(this.availableLinks, x => x.id === id)).active = true;
   }
 }

@@ -10,7 +10,7 @@ import { GiftComponent } from '../../gift/gift.component';
 export const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'album', component: AlbumComponent, canActivate: [AuthGuard] },
-  { path: 'map', component: MapComponent },
+  { path: 'map', component: MapComponent, canActivate: [AuthGuard] },
   { path: 'invitation', component: InvitationComponent },
   { path: 'gift', component: GiftComponent, canActivate: [AuthGuard] }
 ];
