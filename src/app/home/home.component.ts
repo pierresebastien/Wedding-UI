@@ -6,6 +6,7 @@ import { Restangular } from 'ng2-restangular';
 import { HeaderService } from '../shared/services/header.service';
 import { UserService } from '../shared/services/user.service';
 import { HOME_LINK } from '../shared/models/link.model';
+import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -15,23 +16,19 @@ import { HOME_LINK } from '../shared/models/link.model';
 export class HomeComponent implements OnInit {
 
   weddingDate: Date;
-  test: string;
+  currentUser: User;
 
   constructor(private HeaderService: HeaderService, private restangular: Restangular, private UserService: UserService) {
-    this.weddingDate = new Date(2017, 5, 10, 14, 0, 0);
   }
 
   ngOnInit() {
     this.HeaderService.setActiveLink(HOME_LINK);
-    // this.restangular.one('info').get().subscribe(info => {
-    //   this.test = info.Message;
-    // });
     this.UserService.getCurrentUser().subscribe(user => {
-      if (user == null) {
-        this.test = 'test';
-      } else {
-        this.test = user.firstName;
-      }
+      this.currentUser = user;
+    });
+    this.weddingDate = new Date(2017, 5, 10, 14, 0, 0);
+    this.restangular.one('info/date').get().subscribe(info => {
+      this.weddingDate = new Date(info.date);
     });
   }
 }
