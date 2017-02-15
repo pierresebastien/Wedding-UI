@@ -1,5 +1,3 @@
-import { Address } from './address.model';
-
 export abstract class BaseUser {
     id: string;
     firstName: string;
@@ -10,10 +8,7 @@ export abstract class BaseUser {
     box: string;
     zipCode: number;
     city: string;
-
-    public static getAddress(user: BaseUser): Address {
-        return new Address(user.street, user.number, user.zipCode, user.city, user.box);
-    }
+    isRegistrationCompleted: boolean;
 }
 
 export class FamilyUser extends BaseUser {

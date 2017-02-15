@@ -4,52 +4,25 @@
 
   <div class="jumbotron">
     <h1 class="display-3">Votre invitation</h1>
-    <form *ngIf="participation != null" (ngSubmit)="onSubmit()" #participationForm="ngForm">
-      <div class="form-group row">
-        <label for="inputLastName" class="col-sm-1 col-form-label">Nom</label>
-        <div class="col-sm-5">
-          <input type="text" class="form-control" id="inputLastName" [value]="currentUser.lastName" placeholder="Nom" disabled="disabled"/>
-        </div>
-        <label for="inputFirstName" class="col-sm-1 col-form-label">Prénom</label>
-        <div class="col-sm-5">
-          <input type="text" class="form-control" id="inputFirstName" [value]="currentUser.firstName" placeholder="Prénom" [disabled]="true"/>
-        </div>
+
+    <ul class="nav nav-tabs" role="tablist" *ngIf="currentUser != null">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#current" role="tab">{{currentUser.firstName}}</a>
+      </li>
+      <li class="nav-item" *ngFor="let familyUser of currentUser.family; let i = index;">
+        <a class="nav-link" data-toggle="tab" href="#family{{i}}" role="tab">{{familyUser.firstName}}</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" *ngIf="currentUser != null">
+      <div class="tab-pane active" id="current" role="tabpanel">
+        <app-invitation-form [currentUser]="currentUser" [user]="currentUser"></app-invitation-form>
       </div>
-      <div class="row">
-        <h4 class="col-sm-12">Adresse <small class="text-muted">Pour les remerciements</small></h4>
+      <div class="tab-pane" id="family{{i}}" role="tabpanel" *ngFor="let familyUser of currentUser.family; let i = index;">
+        <app-invitation-form [currentUser]="currentUser" [user]="familyUser"></app-invitation-form>
       </div>
-      <div class="form-group row">
-        <label for="inputStreet" class="col-sm-1 col-form-label">Rue</label>
-        <div class="col-sm-5">
-          <input type="text" class="form-control" id="inputStreet" placeholder="Rue" [(ngModel)]="participation.address.street" name="street" #street="ngModel" required/>
-          <div [hidden]="street.valid || street.pristine" class="alert alert-danger">La rue est requise</div>
-        </div>
-        <label for="inputNumber" class="col-sm-1 col-form-label">N°</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" id="inputNumber" [(ngModel)]="participation.address.number" name="number" #number="ngModel" placeholder="N°" required/>
-          <div [hidden]="number.valid || number.pristine" class="alert alert-danger">Le numéro est requis</div>
-        </div>
-        <label for="inputBox" class="col-sm-1 col-form-label">Boîte</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" id="inputBox" [(ngModel)]="participation.address.box" name="box" #box="ngModel" placeholder="Boîte"/>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputZipCode" class="col-sm-1 col-form-label">Code postal</label>
-        <div class="col-sm-5">
-          <input type="number" class="form-control" id="inputZipCode" [(ngModel)]="participation.address.zipCode" name="zipCode" #zipCode="ngModel" placeholder="Code postal" min="1000" max="9999" pattern="\d{4}" required/>
-          <div [hidden]="zipCode.valid || zipCode.pristine" class="alert alert-danger">Le code postal est requis et doit être comprit entre 1000 et 9999</div>
-        </div>
-        <label for="inputCity" class="col-sm-1 col-form-label">Localité</label>
-        <div class="col-sm-5">
-          <input type="text" class="form-control" id="inputCity" [(ngModel)]="participation.address.city" name="city" #city="ngModel" placeholder="Localité" required/>
-          <div [hidden]="city.valid || city.pristine" class="alert alert-danger">La localité est requise</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        
-      </div>
-      <button type="submit" class="btn btn-success" [disabled]="!participationForm.form.valid">Soumettre</button>
-    </form>
+    </div>
+
+    <!-- TODO: else => form with email address to send email -->
   </div>
 </div>

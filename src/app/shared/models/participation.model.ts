@@ -1,9 +1,11 @@
-import { Address } from './address.model';
-
 export class Participation {
     constructor(
         public userId: string,
-        public address: Address,
+        public street: string,
+        public number: string,
+        public zipCode: number,
+        public city: string,
+        public box?: string,
         public additionalInformation?: string,
         public attendings?: Attending[]) {
 
