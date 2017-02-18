@@ -13,6 +13,7 @@ import { User } from '../shared/models/user.model';
 export class InvitationComponent implements OnInit {
 
   currentUser: User;
+  email: string;
 
   constructor(private HeaderService: HeaderService, private UserService: UserService) {
   }
@@ -22,5 +23,8 @@ export class InvitationComponent implements OnInit {
     this.UserService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
     });
+  }
+
+  onSubmit() {
   }
 }

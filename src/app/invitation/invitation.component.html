@@ -5,24 +5,26 @@
   <div class="jumbotron">
     <h1 class="display-3">Votre invitation</h1>
 
-    <ul class="nav nav-tabs" role="tablist" *ngIf="currentUser != null">
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#current" role="tab">{{currentUser.firstName}}</a>
-      </li>
-      <li class="nav-item" *ngFor="let familyUser of currentUser.family; let i = index;">
-        <a class="nav-link" data-toggle="tab" href="#family{{i}}" role="tab">{{familyUser.firstName}}</a>
-      </li>
-    </ul>
+    <ngb-tabset type="tabs" justify="start" activeId="currentUser" *ngIf="currentUser != null">
+      <ngb-tab id="currentUser" title="{{currentUser.firstName}}">
+        <template ngbTabContent>
+          <app-invitation-form [currentUser]="currentUser" [user]="currentUser"></app-invitation-form>
+        </template>
+      </ngb-tab>
+      <ngb-tab id="family{{i}}" title="{{familyUser.firstName}}" *ngFor="let familyUser of currentUser.family; let i = index;">
+        <template ngbTabContent>
+          <app-invitation-form [currentUser]="currentUser" [user]="familyUser"></app-invitation-form>
+        </template>
+      </ngb-tab>
+    </ngb-tabset>
 
-    <div class="tab-content" *ngIf="currentUser != null">
-      <div class="tab-pane active" id="current" role="tabpanel">
-        <app-invitation-form [currentUser]="currentUser" [user]="currentUser"></app-invitation-form>
-      </div>
-      <div class="tab-pane" id="family{{i}}" role="tabpanel" *ngFor="let familyUser of currentUser.family; let i = index;">
-        <app-invitation-form [currentUser]="currentUser" [user]="familyUser"></app-invitation-form>
-      </div>
-    </div>
-
-    <!-- TODO: else => form with email address to send email -->
+    <form class="form-signin" (ngSubmit)="onSubmit()" #signInForm="ngForm" *ngIf="currentUser == null">
+      <h2 class="form-signin-heading"></h2>
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" #emailForm="ngModel" name="email" placeholder="Email"
+        required autofocus />
+      <div [hidden]="emailForm.valid || emailForm.pristine" class="alert alert-danger">La champs est obligatoire</div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!signInForm.form.valid">Envoyer</button>
+    </form>
   </div>
 </div>
