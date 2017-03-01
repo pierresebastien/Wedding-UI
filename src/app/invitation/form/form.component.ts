@@ -21,7 +21,7 @@ export class FormComponent implements OnInit {
   participation: Participation;
   invitations: Invitation[];
 
-// TODO: add is active flag => only load data from api if active + refresh user (family user) if active
+  // TODO: refresh user (family user) if address changed bu other family member???
   constructor(private restangular: Restangular, private UserService: UserService) { }
 
   ngOnInit() {

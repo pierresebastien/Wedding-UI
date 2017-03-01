@@ -6,12 +6,12 @@
     <h1 class="display-3">Votre invitation</h1>
 
     <ngb-tabset type="tabs" justify="start" activeId="currentUser" *ngIf="currentUser != null">
-      <ngb-tab id="currentUser" title="{{currentUser.firstName}}">
+      <ngb-tab id="currentUser" title="{{currentUser.nickname}}">
         <template ngbTabContent>
           <app-invitation-form [currentUser]="currentUser" [user]="currentUser"></app-invitation-form>
         </template>
       </ngb-tab>
-      <ngb-tab id="family{{i}}" title="{{familyUser.firstName}}" *ngFor="let familyUser of currentUser.family; let i = index;">
+      <ngb-tab id="family{{i}}" title="{{familyUser.nickname}}" *ngFor="let familyUser of currentUser.family; let i = index;">
         <template ngbTabContent>
           <app-invitation-form [currentUser]="currentUser" [user]="familyUser"></app-invitation-form>
         </template>

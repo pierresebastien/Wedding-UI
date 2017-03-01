@@ -1,6 +1,10 @@
 <div class="header clearfix">
 	<div class="inner">
-		<h3 class="header-title">{{title}}</h3>
+		<div class="header-title">
+			<img src="/assets/rose-left-pink.svg" />
+			<h3>{{title}}</h3>
+			<img src="/assets/rose-right-pink.svg" />
+		</div>
 		<nav class="nav nav-header">
 			<a class="nav-link" *ngFor="let link of links" [routerLink]="[link.url]" [ngClass]="{active:link.active}">{{link.name}}</a>
 		</nav>

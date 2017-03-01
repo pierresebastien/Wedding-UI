@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Restangular } from 'ng2-restangular';
+
 import { HeaderService } from '../shared/services/header.service';
 import { UserService } from '../shared/services/user.service';
 import { INVITATION_LINK } from '../shared/models/link.model';
@@ -15,7 +17,7 @@ export class InvitationComponent implements OnInit {
   currentUser: User;
   email: string;
 
-  constructor(private HeaderService: HeaderService, private UserService: UserService) {
+  constructor(private HeaderService: HeaderService, private UserService: UserService, private restangular: Restangular) {
   }
 
   ngOnInit() {
@@ -26,5 +28,10 @@ export class InvitationComponent implements OnInit {
   }
 
   onSubmit() {
+    this.restangular.one('auth').one('recover', this.email)
+      .post()
+      .subscribe(x => {
+        // TODO: show message
+      });
   }
 }

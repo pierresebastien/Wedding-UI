@@ -2,6 +2,7 @@ export abstract class BaseUser {
     id: string;
     firstName: string;
     lastName: string;
+    nickname: string;
     additionnalInfos: string;
     street: string;
     number: string;

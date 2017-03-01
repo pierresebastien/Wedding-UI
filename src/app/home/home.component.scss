@@ -1,0 +1,8 @@
+#home-page {
+    background: url('/assets/background_home.png') no-repeat;
+    margin:0;
+    padding:0;
+    -webkit-background-size: cover; /* for old Chrome et Safari */
+    background-size: cover; /* standard */
+    height: 695px;
+}
