@@ -5,7 +5,6 @@ import { Http, HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AgmCoreModule } from 'angular2-google-maps/core';
 import { RestangularModule } from 'ng2-restangular';
 
 import { AppRoutes } from './shared/routes/app.routes';
@@ -18,7 +17,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { AlbumComponent } from './album/album.component';
-import { MapComponent } from './map/map.component';
 import { GiftComponent } from './gift/gift.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { CountdownComponent } from './shared/components/countdown/countdown.component';
@@ -36,7 +34,6 @@ export function restangularConfig(RestangularProvider, http) {
     HomeComponent,
     NavbarComponent,
     AlbumComponent,
-    MapComponent,
     GiftComponent,
     InvitationComponent,
     CountdownComponent,
@@ -48,9 +45,6 @@ export function restangularConfig(RestangularProvider, http) {
     HttpModule,
     RouterModule.forRoot(AppRoutes),
     NgbModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDk6xj1gWOzcLEqPtXlKfWjiWkSd66RXt0'
-    }),
     RestangularModule.forRoot([Http], restangularConfig)
   ],
   providers: [AuthGuard, HeaderService, UserService],

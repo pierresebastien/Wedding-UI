@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 
 import * as _ from 'lodash';
 
-import { Link, HOME_LINK, MAP_LINK, INVITATION_LINK, GIFT_LINK, ALBUM_LINK } from '../models/link.model';
+import { Link, HOME_LINK, INVITATION_LINK, GIFT_LINK, ALBUM_LINK } from '../models/link.model';
 import { UserService } from './user.service';
 
 @Injectable()
@@ -17,7 +17,6 @@ export class HeaderService {
     this.title = 'Ju & Seb';
     this.allLinks = [
       new Link(HOME_LINK, 'Accueil', '/', false),
-      new Link(MAP_LINK, 'Plan', '/map', true),
       new Link(INVITATION_LINK, 'Votre invitation', '/invitation', false),
       new Link(GIFT_LINK, 'Liste de cadeaux', '/gift', true),
       new Link(ALBUM_LINK, 'Photos', '/album', true)
