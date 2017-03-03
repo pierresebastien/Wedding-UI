@@ -1,6 +1,6 @@
 import { WeddingUiPage } from './app.po';
 
-describe('wedding-ui App', function() {
+describe('wedding-ui App', () => {
   let page: WeddingUiPage;
 
   beforeEach(() => {

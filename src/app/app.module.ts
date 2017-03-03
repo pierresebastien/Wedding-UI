@@ -23,7 +23,7 @@ import { CountdownComponent } from './shared/components/countdown/countdown.comp
 import { FormComponent } from './invitation/form/form.component';
 
 export function restangularConfig(RestangularProvider, http) {
-  let apiUrl: string = window.location.protocol.concat('//').concat(window.location.hostname).concat('/api');
+  const apiUrl: string = window.location.protocol.concat('//').concat(window.location.hostname).concat('/api');
   RestangularProvider.setBaseUrl(apiUrl);
   RestangularProvider.setDefaultHeaders({ 'Accept': 'application/json' });
 }
