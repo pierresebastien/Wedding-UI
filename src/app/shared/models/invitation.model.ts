@@ -3,6 +3,7 @@ export class Invitation {
     isAttending: boolean;
     eventId: string;
     eventName: string;
+    eventDescription: string;
     startDate: Date;
     placeId: string;
     placeName: string;

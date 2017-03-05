@@ -1,3 +1,5 @@
+@import '../../variables';
+
 #home-page {
     background: url('/assets/background_home.png') no-repeat;
     margin:0;
@@ -5,4 +7,37 @@
     -webkit-background-size: cover; /* for old Chrome et Safari */
     background-size: cover; /* standard */
     height: 695px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.brand { 
+    padding-top: 200px;
+    padding-bottom: 100px;
+
+    h1 {
+        color: #ffffff;
+        display: inline-block;
+        border-top: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+        padding: 10px 15px;
+        font-size: 76px;
+        text-shadow: 2px 2px 0px #8a1f53;
+        font-family: $home-title-font, cursive;
+    }
+}
+
+.heart {
+    color: $wedding-pink;
+    display: inline-block;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 36px;
+
+    .fa-heart {
+        animation: beat .25s infinite alternate;
+        transform-origin: center;
+    }
 }

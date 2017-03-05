@@ -1,5 +1,7 @@
-$active-link-color: rgb(244, 66, 89);
-$link-color: rgba(244, 66, 89, .5);
+@import '../../../../variables';
+
+$active-link-color: $wedding-pink;
+$link-color: rgba($wedding-pink, .5);
 
 a,
 a:focus,
@@ -14,6 +16,7 @@ a:hover {
 
 .header {
   margin-bottom: 2rem;
+  font-family: $navbar-font, serif;
 }
 
 .header-title h3 {
