@@ -1,17 +1,316 @@
-.album {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  background-color: #f7f7f7;
+@import '../../variables';
+
+@mixin background-size($size) {
+    -webkit-background-size: $size;
+    -moz-background-size: $size;
+    -ms-background-size: $size;
+    -o-background-size: $size;
+    background-size: $size;
 }
 
-.card {
-  float: left;
-  width: 33.333%;
-  padding: .75rem;
-  margin-bottom: 2rem;
-  border: 0;
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
 }
 
-.card > img {
-  margin-bottom: .75rem;
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    -ms-box-shadow: $shadow;
+    -o-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+.invitation {
+    background-color: #efefef;
+    padding-bottom: 180px;
+    padding-top: 80px;
+}
+
+.content {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    list-style-type: none;
+    background-color: transparent;
+    background-image: url('/assets/background_timeline.png');
+    @include background-size(2px auto);
+    background-position: center top;
+    background-repeat: repeat-y;
+    background-attachment: initial;
+
+    &::before, &::after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+
+    ul {
+        list-style: none;
+        list-style-type: none;
+        margin: 0;
+        padding: 2em 0 6em 0;
+
+        &::before, &::after {
+            content: '';
+            display: table;
+            line-height: 0;
+        }
+
+        &::after {
+            content: '';
+            clear: both;
+        }
+    }
+}
+
+.content-avatar {
+    background: $wedding-pink;
+    position: relative;
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    padding: 7px 8px;
+    color: #fff;
+    font-size: 24px;
+    line-height: normal;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1;
+    @include border-radius(100%);
+
+    &::after, &::before {
+        top: 99%;
+        border: solid transparent;
+        content: '';
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &::before {       
+        border-bottom-color: rgba(0,0,0,0.01);
+        border-width: 12px;
+        left: 50%;
+        margin-left: -12px;
+    }
+
+    &::after {
+        content: '';
+        border-top-color: $wedding-pink;
+        border-width: 11px;
+        left: 50%;
+        margin-left: -10.5px;
+    }
+
+    .img-avatar {
+        display: block;
+        width: 100%;
+        height: 100%;
+        @include border-radius(100%);
+        background-color: transparent;
+        background-image: none;
+        @include background-size(cover);
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: initial;
+        overflow: hidden;
+        background-image: url('/assets/ju.png');
+    }
+}
+
+.content-item {
+    padding-bottom: 60px;
+    position: relative;
+    right: 30px;
+    float: left;
+    width: 42%;
+    margin-top: -80px;
+    margin-left: 8%;
+    clear: both;
+    padding: 2%;
+    font-family: $wedding-font, serif;
+    color: #888;
+    background-color: #fff;
+    @include box-shadow(0 1px 3px rgba(0,0,0,0.15));
+    @include border-radius(4px);
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &::after, &::before {
+        top: 50%;
+        right: -19px;
+        position: absolute;
+        display: block;
+        height: 32px;
+        width: 30px;
+        margin: -15px 0 0;
+        font-size: 30px;
+        line-height: 32px;
+        font-weight: 400;
+        text-align: center;
+        pointer-events: none;
+    }
+
+    &::before {
+        font-family: 'FontAwesome';
+        content: '\f0dA';
+        font-style: normal;
+        display: inline-block;
+        color: #fff;
+    }
+
+    &[data-event="1"] {
+        &::after {
+            font-family: 'FontAwesome';
+            content: '\f228';
+        }
+    }
+
+    &[data-event="2"] {
+        &::after {
+            font-family: 'FontAwesome';
+            content: '\f004';
+        }
+    }
+
+    &[data-event="3"] {
+        &::after {
+            font-family: 'FontAwesome';
+            content: '\f000';
+        }
+    }
+
+    &[data-event="4"] {
+        &::after {
+            font-family: 'FontAwesome';
+            content: '\f0f5';
+        }
+    }
+
+    &[data-event="5"] {
+        &::after {
+            font-family: 'FontAwesome';
+            content: '\f001';
+        }
+    }
+
+    &[data-event="6"] {
+        &::after {
+            font-family: 'FontAwesome';
+            content: '\f021';
+        }
+    }
+
+    &::after {
+        color: $wedding-pink !important;
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 400;
+        @include box-shadow(0 0 0 3px $wedding-pink);
+        font-style: normal;
+        display: inline-block;
+        right: -46.5px;
+        width: 30px;
+        height: 30px;
+        clear: both;
+        padding: 3px 1px 0;
+        @include border-radius(100%);
+        background-color: #fff;
+    }
+
+    &:nth-child(even) {
+        float: right;
+        left: 30px;
+        right: 0;
+        margin-right: 8%;
+        margin-left: 0;
+
+        &::before {
+            font-family: 'FontAwesome';
+            content: '\f0d9';
+            font-style: normal;
+            display: inline-block;
+            left: -20px;
+        }
+
+        &::after {
+            left: -47px;
+        }
+    }
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 42px;
+        line-height: 46px;
+        font-weight: 700;
+        color: $wedding-pink;
+    }
+
+    .text {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .infos {
+        position: absolute;
+        bottom: 15px;
+        right: 20px;
+        color: #bbb;
+        font-size: 18px;
+        line-height: 23px;
+        font-weight: 400;
+
+        i {
+            color: $wedding-pink;
+        }
+
+        a {
+            color: #bbb;
+        }
+    }
+}
+
+.content-end {
+    .content-avatar {
+        margin-bottom: -90px;
+
+        &::before, &::after {
+            content: " ";
+            position: absolute;
+            top: -20px;
+            height: 0;
+            width: 0;
+            border: solid transparent;
+            pointer-events: none;
+        }
+
+        &::before {
+            content: '';
+            left: 50%;
+            margin-left: -12px;
+            border-bottom-color: rgba(0,0,0,0.01);
+            border-width: 12px;
+        }
+
+        &::after {
+              content: '';
+              left: 50%;
+              margin-left: -10.5px;
+              border-bottom-color: $wedding-pink;
+              border-width: 11px;
+        }
+    }
+
+    .img-avatar {
+        background-image: url('/assets/seb.png');
+    }
 }

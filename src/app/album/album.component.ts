@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Restangular } from 'ng2-restangular';
+
+import { UserService } from '../shared/services/user.service';
 import { HeaderService } from '../shared/services/header.service';
 import { ALBUM_LINK } from '../shared/models/link.model';
+import { Invitation } from '../shared/models/invitation.model';
 
 @Component({
   selector: 'app-album',
@@ -10,17 +14,17 @@ import { ALBUM_LINK } from '../shared/models/link.model';
 })
 export class AlbumComponent implements OnInit {
 
-  album: string[];
+  invitations: Invitation[];
 
-  constructor(private HeaderService: HeaderService) {
+  constructor(private HeaderService: HeaderService, private restangular: Restangular, private UserService: UserService) {
     HeaderService.setActiveLink(ALBUM_LINK);
-    this.album = [];
-    for (let i = 1; i <= 10; i++) {
-      this.album.push('');
-    }
   }
 
   ngOnInit() {
+    this.UserService.getCurrentUser().subscribe(user => {
+      this.UserService.getParticipations(user.id).subscribe(invitations => {
+        this.invitations = invitations;
+      });
+    });
   }
-
 }

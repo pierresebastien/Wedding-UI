@@ -2,13 +2,41 @@
 
   <app-navbar></app-navbar>
 
-  <div class="album text-muted">
-    <div class="container">
-      <div class="row">
-        <div class="card" *ngFor="let photo of album">
-          <img data-src="" alt="Card image cap">
-        </div>
-      </div>
-    </div>
+  <div class="col-12 invitation">
+    <ul class="content">
+      <li>
+        <h3 class="content-avatar avatar-top">
+          <div class="img-avatar"></div>
+        </h3>
+      </li>
+      <ul>
+        <li class="content-item" *ngFor="let invitation of invitations; let i = index;" [attr.data-event]="invitation.eventId">
+          <h3>{{invitation.eventName}}</h3>
+          <div class="text">
+            {{invitation.eventDescription}} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.
+          </div>
+          <div class="infos">
+            <div>
+              <i class="fa fa-fw fa-calendar"></i> {{invitation.startDate}}
+            </div>
+            <div>
+              <i class="fa fa-fw fa-map-marker"></i>
+              <a href="https://maps.google.com/maps?q={{invitation.latitude}},{{invitation.longitude}}">
+                {{invitation.street}}, {{invitation.number}} {{invitation.zipCode}} {{invitation.city}}
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <li class="content-end">
+        <h3 class="content-avatar avatar-end">
+          <div class="img-avatar"></div>
+        </h3>
+      </li>
+    </ul>
   </div>
 </div>
