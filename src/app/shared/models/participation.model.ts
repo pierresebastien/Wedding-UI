@@ -6,7 +6,7 @@ export class Participation {
         public zipCode: number,
         public city: string,
         public box?: string,
-        public additionalInformation?: string,
+        public additionnalInfos?: string,
         public attendings?: Attending[]) {
 
         if (this.attendings == null) {

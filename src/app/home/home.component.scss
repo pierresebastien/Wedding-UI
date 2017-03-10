@@ -1,5 +1,12 @@
 @import '../../variables';
 
+@keyframes heartbeat {
+    
+    1% { transform: scale(1, 1);}
+    50% {  transform: scale(1.5, 1.5); }
+    100% { transform: scale(1, 1);}
+}
+
 #home-page {
     background: url('/assets/background_home.png') no-repeat;
     margin:0;
@@ -37,7 +44,6 @@
     font-size: 36px;
 
     .fa-heart {
-        animation: beat .25s infinite alternate;
-        transform-origin: center;
+        animation: heartbeat 0.75s infinite;
     }
 }
