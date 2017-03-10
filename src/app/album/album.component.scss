@@ -205,6 +205,13 @@
     &[data-event="6"] {
         &::after {
             font-family: 'FontAwesome';
+            content: '\f236';
+        }
+    }
+
+    &[data-event="7"] {
+        &::after {
+            font-family: 'FontAwesome';
             content: '\f021';
         }
     }
@@ -258,6 +265,7 @@
     .text {
         font-size: 18px;
         line-height: 26px;
+        padding-bottom: 38px;
     }
 
     .infos {

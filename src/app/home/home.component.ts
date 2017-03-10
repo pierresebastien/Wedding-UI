@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     this.UserService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
     });
-    this.weddingDate = new Date(2017, 5, 10, 14, 0, 0);
+    this.weddingDate = new Date(2017, 5, 10, 15, 0, 0);
     this.restangular.one('info/date').get().subscribe(info => {
       this.weddingDate = new Date(info.date);
     });

@@ -1,16 +1,4 @@
 <form (ngSubmit)="onSubmit()" #participationForm="ngForm">
-  <div class="form-group row">
-    <label for="inputLastName" class="col-sm-1 col-form-label">Nom</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control" id="inputLastName" [value]="user.lastName" placeholder="Nom" disabled="disabled"
-      />
-    </div>
-    <label for="inputFirstName" class="col-sm-1 col-form-label">Prénom</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control" id="inputFirstName" [value]="user.firstName" placeholder="Prénom" disabled="disabled"
-      />
-    </div>
-  </div>
   <div class="row">
     <h4 class="col-sm-12">Adresse <small class="text-muted">Pour les remerciements</small></h4>
   </div>
@@ -51,10 +39,18 @@
     <h4 class="col-sm-12">Evénements</h4>
   </div>
   <div class="form-group row" *ngFor="let invitation of invitations; let i = index;">
-    <label for="inputEventAttending{{i}}" class="col-sm-3 col-form-label">Le {{invitation.startDate | date: 'dd/MM à HH:mm'}} : {{invitation.eventName}}</label>
+    <label for="inputEventAttending{{i}}" class="col-sm-3 col-form-label">
+      {{invitation.startDate | date: 'HH:mm'}} : {{invitation.eventDescription}}
+      <br>
+      Addresse : {{invitation.street}}, {{invitation.number}} {{invitation.zipCode}} {{invitation.city}}
+    </label>
     <input type="hidden" [(ngModel)]="participation.attendings[i].eventId" name="eventId{{i}}" />
     <input type="checkbox" class="form-check-input col-sm-1" id="inputEventAttending{{i}}" [(ngModel)]="participation.attendings[i].isAttending"
       name="eventAttending{{i}}" />
+    <div *ngIf="invitation.eventId == 4">
+      <label for="additionnalInfos" class="col-sm-12 col-form-label">Allergies alimentaires</label>
+      <textarea class="form-control col-sm-12" [(ngModel)]="participation.additionalInformation" id="additionnalInfos" name="additionnalInfos"></textarea>
+    </div>
   </div>
   <!-- TODO: additional infos for event with id = x -->
   <button type="submit" class="btn btn-success" [disabled]="!participationForm.form.valid">Soumettre</button>

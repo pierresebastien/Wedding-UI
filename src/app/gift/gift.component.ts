@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Restangular } from 'ng2-restangular';
+
 import { HeaderService } from '../shared/services/header.service';
 import { GIFT_LINK } from '../shared/models/link.model';
 
@@ -10,11 +12,16 @@ import { GIFT_LINK } from '../shared/models/link.model';
 })
 export class GiftComponent implements OnInit {
 
-    constructor(private HeaderService: HeaderService) {
+  bankAccount: string;
+
+  constructor(private HeaderService: HeaderService, private restangular: Restangular) {
     HeaderService.setActiveLink(GIFT_LINK);
   }
 
   ngOnInit() {
+    this.restangular.one('info/account').get().subscribe(info => {
+      this.bankAccount = info.message;
+    });
   }
 
 }

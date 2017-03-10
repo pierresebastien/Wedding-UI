@@ -21,7 +21,7 @@ export class FormComponent implements OnInit {
   participation: Participation;
   invitations: Invitation[];
 
-  // TODO: refresh user (family user) if address changed bu other family member???
+  // TODO: refresh user (family user) if address changed but other family member???
   constructor(private restangular: Restangular, private UserService: UserService) { }
 
   ngOnInit() {
