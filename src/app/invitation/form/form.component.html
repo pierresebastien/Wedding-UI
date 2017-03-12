@@ -42,7 +42,7 @@
     <label for="inputEventAttending{{i}}" class="col-sm-3 col-form-label">
       {{invitation.startDate | date: 'HH:mm'}} : {{invitation.eventDescription}}
       <br>
-      Addresse : {{invitation.street}}, {{invitation.number}} {{invitation.zipCode}} {{invitation.city}}
+      Addresse : {{invitation.street}}<span *ngIf="invitation.number != ''">, {{invitation.number}}</span> {{invitation.zipCode}} {{invitation.city}}
     </label>
     <input type="hidden" [(ngModel)]="participation.attendings[i].eventId" name="eventId{{i}}" />
     <input type="checkbox" class="form-check-input col-sm-1" id="inputEventAttending{{i}}" [(ngModel)]="participation.attendings[i].isAttending"
