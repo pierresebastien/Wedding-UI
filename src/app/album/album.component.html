@@ -1,36 +1,4 @@
 <div class="container-fluid">
 
   <app-navbar></app-navbar>
-
-  <div class="col-12 invitation">
-    <ul class="content">
-      <li>
-        <h3 class="content-avatar avatar-top">
-          <div class="img-avatar"></div>
-        </h3>
-      </li>
-      <ul>
-        <li class="content-item" *ngFor="let invitation of invitations; let i = index;" [attr.data-event]="invitation.eventId">
-          <h3>{{invitation.eventName}}</h3>
-          <div class="text">{{invitation.eventDescription}}</div>
-          <div class="infos">
-            <div>
-              <i class="fa fa-fw fa-calendar"></i> {{invitation.startDate}}
-            </div>
-            <div>
-              <i class="fa fa-fw fa-map-marker"></i>
-              <a href="https://maps.google.com/maps?q={{invitation.latitude}},{{invitation.longitude}}">
-                {{invitation.street}}, {{invitation.number}} {{invitation.zipCode}} {{invitation.city}}
-              </a>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <li class="content-end">
-        <h3 class="content-avatar avatar-end">
-          <div class="img-avatar"></div>
-        </h3>
-      </li>
-    </ul>
-  </div>
 </div>
