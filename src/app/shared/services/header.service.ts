@@ -17,8 +17,8 @@ export class HeaderService {
     this.title = 'Ju & Seb';
     this.allLinks = [
       new Link(HOME_LINK, 'Accueil', '/', false),
-      new Link(INVITATION_LINK, 'Votre invitation', '/invitation', false),
-      new Link(GIFT_LINK, 'Liste de cadeaux', '/gift', true),
+      new Link(INVITATION_LINK, 'Ton invitation', '/invitation', false),
+      new Link(GIFT_LINK, 'Liste de mariage', '/gift', true),
       new Link(ALBUM_LINK, 'Photos', '/album', true)
     ];
     this.availableLinks = _.filter(this.allLinks, x => !x.needAuth);

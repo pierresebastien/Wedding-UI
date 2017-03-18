@@ -21,7 +21,6 @@ export class FormComponent implements OnInit {
   participation: Participation;
   invitations: Invitation[];
 
-  // TODO: refresh user (family user) if address changed but other family member???
   constructor(private restangular: Restangular, private UserService: UserService) { }
 
   ngOnInit() {
@@ -38,6 +37,7 @@ export class FormComponent implements OnInit {
       .post('invitations', this.participation)
       .subscribe(x => {
         this.currentUser.isRegistrationCompleted = true;
+        alert('Nous avons bien reçu ta réponse. Merci !');
       });
   }
 }
