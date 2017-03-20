@@ -15,4 +15,5 @@ export class Invitation {
     number: string;
     zipCode: number;
     city: string;
+    showAddress: boolean;
 }

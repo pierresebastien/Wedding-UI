@@ -21,6 +21,7 @@ export class FormComponent implements OnInit {
 
   participation: Participation;
   invitations: Invitation[];
+  showAddresses: number[];
 
   constructor(private restangular: Restangular, private UserService: UserService, private toastrService: ToastrService) { }
 
@@ -28,6 +29,13 @@ export class FormComponent implements OnInit {
     this.participation = new Participation(this.user.id, this.user.street, this.user.number, this.user.zipCode, this.user.city,
       this.user.box, this.user.additionnalInfos);
     this.UserService.getParticipations(this.user.id).subscribe(invitations => {
+      let lastPlaceId = '';
+      for (let i of invitations) {
+        if (lastPlaceId !== i.placeId) {
+          i.showAddress = true;
+        }
+        lastPlaceId = i.placeId;
+      }
       this.participation.attendings = _.map(invitations, x => new Attending(x.eventId, x.isAttending));
       this.invitations = invitations;
     });
