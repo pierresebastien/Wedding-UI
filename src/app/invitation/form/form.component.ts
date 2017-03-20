@@ -48,6 +48,6 @@ export class FormComponent implements OnInit {
       response => {
         this.currentUser.isRegistrationCompleted = true;
         this.toastrService.success('Ta réponse a bien été reçue');
-      };
+      });
   }
 }
