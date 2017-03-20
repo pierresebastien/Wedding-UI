@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Restangular } from 'ng2-restangular';
+import { ToastrService } from 'ngx-toastr';
 import * as _ from 'lodash';
 
 import { UserService } from '../../shared/services/user.service';
@@ -21,7 +22,7 @@ export class FormComponent implements OnInit {
   participation: Participation;
   invitations: Invitation[];
 
-  constructor(private restangular: Restangular, private UserService: UserService) { }
+  constructor(private restangular: Restangular, private UserService: UserService, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.participation = new Participation(this.user.id, this.user.street, this.user.number, this.user.zipCode, this.user.city,
@@ -35,9 +36,10 @@ export class FormComponent implements OnInit {
   onSubmit() {
     this.restangular.one('users', this.currentUser.id)
       .post('invitations', this.participation)
-      .subscribe(x => {
+      .subscribe(
+      response => {
         this.currentUser.isRegistrationCompleted = true;
-        alert('Nous avons bien reçu ta réponse. Merci !');
-      });
+        this.toastrService.success('Ta réponse a bien été reçue');
+      };
   }
 }

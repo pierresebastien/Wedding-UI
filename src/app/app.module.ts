@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RestangularModule } from 'ng2-restangular';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutes } from './shared/routes/app.routes';
 import { AuthGuard } from './shared/auth.guard';
@@ -45,7 +46,16 @@ export function restangularConfig(RestangularProvider, http) {
     HttpModule,
     RouterModule.forRoot(AppRoutes),
     NgbModule.forRoot(),
-    RestangularModule.forRoot([Http], restangularConfig)
+    RestangularModule.forRoot([Http], restangularConfig),
+    ToastrModule.forRoot({
+      maxOpened: 0,
+      autoDismiss: false,
+      newestOnTop: true,
+      preventDuplicates: false,
+      closeButton: true,
+      tapToDismiss: true,
+      positionClass: 'toast-top-right'
+    })
   ],
   providers: [AuthGuard, HeaderService, UserService],
   bootstrap: [AppComponent]

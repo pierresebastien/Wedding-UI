@@ -36,3 +36,33 @@ h1 {
     -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
     box-shadow: 0 5px 15px rgba(0,0,0,.5)
 }
+
+form {
+    text-align: left;
+    position: relative;
+    padding: 0px 60px;
+}
+
+button {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 15px 45px;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.row {
+    padding-top: 20px;
+}
