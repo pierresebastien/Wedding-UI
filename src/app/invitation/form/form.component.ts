@@ -42,6 +42,7 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.toastrService.info('Envoi de la répons en cours, cela peut prendre un certains temps');
     this.restangular.one('users', this.currentUser.id)
       .post('invitations', this.participation)
       .subscribe(
