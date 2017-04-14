@@ -9,7 +9,7 @@
     <div class="col-sm-12 event">
       <div class="col-sm-10">
         <p class="description">{{invitation.startDate | date: 'HH:mm'}} : {{invitation.eventDescription}}</p>
-        <p class="address" *ngIf="invitation.showAddress">Addresse : {{invitation.street}}<span *ngIf="invitation.number != ''"> {{invitation.number}}</span>, {{invitation.zipCode}}
+        <p class="address" *ngIf="invitation.showAddress">Adresse : {{invitation.street}}<span *ngIf="invitation.number != ''"> {{invitation.number}}</span>, {{invitation.zipCode}}
           {{invitation.city}}
         </p>
       </div>
