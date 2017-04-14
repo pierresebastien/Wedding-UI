@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables';
+
+@font-face {
+    font-family: $home-title-font;
+    src: url('/assets/GreatVibes-Regular.otf');
+}
+
+@font-face {
+    font-family: $wedding-font;
+    src: url('/assets/EBGaramond12-Regular.ttf');
+}
+
+.text-center {
+    text-align: center;
+}

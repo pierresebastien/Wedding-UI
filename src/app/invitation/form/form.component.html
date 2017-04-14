@@ -1,0 +1,65 @@
+<form (ngSubmit)="onSubmit()" #participationForm="ngForm">
+  <div class="row">
+    <div class="col-sm-12 event">
+      <div class="col-sm-10"></div>
+      <div class="col-sm-2">Je participe?</div>
+    </div>
+  </div>
+  <div class="form-group row" *ngFor="let invitation of invitations; let i = index;">
+    <div class="col-sm-12 event">
+      <div class="col-sm-10">
+        <p class="description">{{invitation.startDate | date: 'HH:mm'}} : {{invitation.eventDescription}}</p>
+        <p class="address" *ngIf="invitation.showAddress">Adresse : {{invitation.street}}<span *ngIf="invitation.number != ''"> {{invitation.number}}</span>, {{invitation.zipCode}}
+          {{invitation.city}}
+        </p>
+      </div>
+      <input type="hidden" [(ngModel)]="participation.attendings[i].eventId" name="eventId{{i}}" />
+      <div class="col-sm-2">
+        <input type="checkbox" id="inputEventAttending{{i}}" [(ngModel)]="participation.attendings[i].isAttending" name="eventAttending{{i}}"
+        />
+      </div>
+      <div *ngIf="invitation.eventId == 4" class="col-sm-11">
+        <label for="additionnalInfos" class="col-form-label">Allergies alimentaires :</label>
+        <textarea class="form-control" [(ngModel)]="participation.additionnalInfos" id="additionnalInfos" name="additionnalInfos"></textarea>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="currentUser.id == user.id">
+    <div class="row">
+      <h4 class="col-sm-12">Adresse <small class="text-muted">(Pour les remerciements)</small></h4>
+    </div>
+    <div class="form-group col-xs-11 col-sm-6">
+      <div class="form-group-inner">
+        <label for="inputStreet" class="col-form-label">Rue</label>
+        <input type="text" class="form-control" id="inputStreet" placeholder="Rue" [(ngModel)]="participation.street" name="street"
+          #streetForm="ngModel" required/>
+        <div [hidden]="streetForm.valid || streetForm.pristine" class="alert alert-danger">La rue est requise</div>
+      </div>
+    </div>
+    <div class="form-group col-xs-11 col-sm-5">
+      <div class="form-group-inner">
+        <label for="inputNumber" class="col-form-label">N°</label>
+        <input type="text" class="form-control" id="inputNumber" [(ngModel)]="participation.number" name="number" #numberForm="ngModel"
+          placeholder="N°" required/>
+        <div [hidden]="numberForm.valid || numberForm.pristine" class="alert alert-danger">Le numéro est requis</div>
+      </div>
+    </div>
+    <div class="form-group col-xs-11 col-sm-6">
+      <div class="form-group-inner">
+        <label for="inputZipCode" class="col-form-label">Code postal</label>
+        <input type="number" class="form-control" id="inputZipCode" [(ngModel)]="participation.zipCode" name="zipCode" #zipCodeForm="ngModel"
+          placeholder="Code postal" pattern="\d+" required/>
+        <div [hidden]="zipCodeForm.valid || zipCodeForm.pristine" class="alert alert-danger">Le code postal est requis</div>
+      </div>
+    </div>
+    <div class="form-group col-xs-11 col-sm-5">
+      <div class="form-group-inner">
+        <label for="inputCity" class="col-form-label">Localité</label>
+        <input type="text" class="form-control" id="inputCity" [(ngModel)]="participation.city" name="city" #cityForm="ngModel" placeholder="Localité"
+          required/>
+        <div [hidden]="cityForm.valid || cityForm.pristine" class="alert alert-danger">La localité est requise</div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success col-sm-11" [disabled]="!participationForm.form.valid">Soumettre</button>
+</form>

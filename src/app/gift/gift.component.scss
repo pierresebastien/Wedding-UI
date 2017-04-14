@@ -1,0 +1,27 @@
+@import '../../variables';
+$tmp: #8a1f53;
+
+#gift-page {
+    background: url('/assets/background_gift.png') no-repeat;
+    margin:0;
+    padding:0;
+    -webkit-background-size: cover; /* for old Chrome et Safari */
+    background-size: cover; /* standard */
+    height: 88vh;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.message { 
+    color: white;
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    /*text-shadow: 3px 2px 0px #8a1f53;*/
+    text-shadow: 2px 0 0 $tmp, -2px 0 0 $tmp, 0 2px 0 $tmp, 0 -2px 0 $tmp, 1px 1px $tmp, -1px -1px 0 $tmp, 1px -1px 0 $tmp, -1px 1px 0 $tmp;
+    width: 65rem;
+    font-family: $wedding-font, serif;
+}

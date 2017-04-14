@@ -1,0 +1,68 @@
+@import '../../variables';
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.completed {
+    color: #42A948;
+}
+
+#invitation-page {
+    background: url('/assets/background_home.png') no-repeat;
+    margin:0;
+    padding:0;
+    -webkit-background-size: cover; /* for old Chrome et Safari */
+    background-size: cover; /* standard */
+    height: 695px;
+}
+
+h1 {
+    color: black;
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 76px;
+    font-family: $home-title-font, cursive;
+}
+
+.invitation-modal {
+    border-color: black;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    background-color: white;
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,.5)
+}
+
+form {
+    text-align: left;
+    position: relative;
+    padding: 0px 60px;
+}
+
+button {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 15px 45px;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.row {
+    padding-top: 20px;
+}
