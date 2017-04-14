@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { Restangular } from 'ng2-restangular';
 
@@ -10,11 +10,11 @@ import { Invitation } from '../models/invitation.model';
 @Injectable()
 export class UserService {
 
-  user: BehaviorSubject<User>;
+  user: ReplaySubject<User>;
   currentUser: Observable<User>;
 
   constructor(private restangular: Restangular) {
-    this.user = new BehaviorSubject<User>(null);
+    this.user = new ReplaySubject<User>();
     this.currentUser = this.user.asObservable();
     this.restangular.one('users/me').get().subscribe(
       user => {

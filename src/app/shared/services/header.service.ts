@@ -10,29 +10,20 @@ import { UserService } from './user.service';
 export class HeaderService {
 
   title: string;
-  allLinks: Link[];
-  availableLinks: Link[];
+  links: Link[];
 
   constructor(private UserService: UserService) {
     this.title = 'Ju & Seb';
-    this.allLinks = [
+    this.links = [
       new Link(HOME_LINK, 'Accueil', '/', false),
       new Link(INVITATION_LINK, 'Ton invitation', '/invitation', false),
       new Link(GIFT_LINK, 'Liste de mariage', '/gift', true),
       new Link(ALBUM_LINK, 'Photos', '/album', true)
     ];
-    this.availableLinks = _.filter(this.allLinks, x => !x.needAuth);
   }
 
-  getLinks(): Observable<Link[]> {
-    return this.UserService.getCurrentUser().map(user => {
-      if (user != null) {
-        this.availableLinks = this.allLinks;
-      } else {
-        this.availableLinks = _.filter(this.allLinks, x => !x.needAuth);
-      }
-      return this.availableLinks;
-    });
+  getLinks(): Link[] {
+     return this.links;
   }
 
   getTitle(): string {
@@ -40,7 +31,7 @@ export class HeaderService {
   }
 
   setActiveLink(id: number) {
-    _.forEach(_.filter(this.availableLinks, x => x.active), x => x.active = false);
-    _.first(_.filter(this.availableLinks, x => x.id === id)).active = true;
+    _.forEach(_.filter(this.links, x => x.active), x => x.active = false);
+    _.first(_.filter(this.links, x => x.id === id)).active = true;
   }
 }
